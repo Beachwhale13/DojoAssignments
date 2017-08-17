@@ -1,0 +1,130 @@
+#wrapper{
+ width: 950px;
+ }
+
+a {
+  color: black;
+}
+
+.banner{
+  background-color: #e6e6e6;
+}
+
+#buttons{
+  display: flex;
+  justify-content: center;
+}
+
+#button{
+  background-color: #2d8659;
+  border-radius: 10px;
+  color: white;
+  font-size: small;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#icon {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+}
+
+#techicon {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+}
+
+h1.banner{
+  display: inline-block;
+  font-family: "comic sans MS", cursive, sans-serif;
+  margin: 8px 0px 8px 10px;
+
+}
+h2.banner{
+  display:inline-block;
+  float: right;
+  margin-right: 8px;
+}
+
+h3{
+  margin: 0 auto;
+}
+
+.main{
+  background: radial-gradient(#ecc6c6, #33001a);
+  padding: 20px;
+}
+
+#mephoto{
+  display: inline-block;
+  width: 430px;
+  height: 277px;
+  background-color: #e6e6e6;
+  border: solid 5px lightgrey;
+  margin-right: 20px;
+}
+
+.aboutbox{
+  width: 440px;
+  height: 287px;
+  display:inline-block;
+  background-color: #b3b3b3;
+  vertical-align: top;
+}
+
+#blockheader{
+  background-color: #8c8c8c;
+  color: white;
+  padding: 10px;
+  margin-top: 0px;
+}
+
+.about{
+  margin-left: 10px;
+}
+
+.lamodebox,
+.family,
+.fiveEleven {
+  display: inline-block;
+  width: 285px;
+  margin-top: 2px;
+  background-color: #b3b3b3;
+  margin-right: 20px;
+  vertical-align: top;
+}
+
+.topbox{
+  height: 365px;
+}
+
+
+.fiveEleven {
+  margin-right: 0px;
+}
+
+#boxpic {
+  width: 285px;
+  margin-top: 0px;
+}
+
+#boxtext{
+  font-size: small;
+  padding: 5px;
+}
+
+
+.footer{
+  background-color: #e6e6e6;
+  text-align: center;
+  padding-bottom: 7px;
+  padding-top: 1px;
+}
+
+#contactlink{
+  font-style: italic;
+}
