@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hover</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $('document').ready(function(){
+        var temp;
+        $('img').hover(function(){
+          temp = $(this).attr('src');
+  				$(this).attr('src', "img/fatbaby.jpg");
+  			}, function(){
+  				$(this).attr('src', temp);
+  			});
+      })
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <h1>Hover In and Out</h1>
+      <img src="img/cheesecake.jpg" alt="cheesecake">
+      <img src="img/creampuff.jpg" alt="creampuff">
+      <img src="img/croissants.jpg" alt="croissants">
+      <img src="img/palmier.jpg" alt="palmier">
+    </div>
+  </body>
+</html>

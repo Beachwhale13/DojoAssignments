@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Card</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      function createCard(){
+        $('form').submit(function(){
+          var first = $('#first_name').val();
+          var last = $('#last_name').val();
+          var info = $('#descript').val();
+          var clearit = $(this).children('input');
+          $('.infocolumn').append("<div class='column card'><h1>" + first + " "+ last + "</h1><p class='flip'>Click for more!</p><p class='information'>" + info + "</p></div>");
+          for (var i = 0; i < clearit.length; i++){
+            $(clearit[i]).val('');
+          }
+          return false;
+        })
+      };
+
+      $(document).ready(function(){
+        $('button').submit(createCard());
+
+        $(document).on('click', '.flip', function(){
+          if ($(this).siblings().css("display") === "block"){
+            $(this).siblings().css("display", "none");
+          } else{
+            $(this).siblings().css("display", "block");
+          }
+          if ($(this).siblings('.information').css("display") === "none"){
+            $(this).siblings('.information').css("display", "block");
+          } else{
+            $(this).siblings('.information').css("display", "none");
+          }
+        });
+    })
+
+    </script>
+  </head>
+
+  <body>
+    <div class='column'>
+      <form>
+        <h1 id="heading">Contact Card</h1>
+        First Name: <input type="text", name="first_name" id="first_name"><br>
+        Last Name: <input type="text", name="last_name" id="last_name"><br>
+        Description:<br>
+        <input type="text", name="descript" id="descript"><br>
+        <button> Add User </button>
+    </div>
+    <div class='column infocolumn'>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+*{
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+form{
+  border: 1px black solid;
+  margin-right: 10px;
+}
+
+input{
+  margin-bottom: 10px;
+}
+
+button,{
+  border: 1px solid black;
+  margin-top: 20px;
+}
+
+#heading{
+  text-align: center;
+}
+
+#descript{
+  width: 31%;
+  height: 50px;
+}
+
+.column{
+  margin-bottom: 10px;
+  width: 400px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.card{
+  height: 162px;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px black solid;
+  margin: 0px 10px 10px 0;
+  text-align: center;
+}
+
+.information{
+  display: none;
+}

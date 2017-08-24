@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Disappearing Ninja</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('img').click(function(){
+          $(this).hide();
+        });
+        $('#button').click(function(){
+          $('img').attr("style", "inital");
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <h1>jQuery Assignment: Disappering Ninja</h1>
+      <img src="ninja.jpg" alt="ninja1">
+      <img src="chicken.png" alt="chicken">
+      <img src="cuteninja.jpg" alt="cute">
+      <img src="pandaninja.jpg" alt="panda">
+      <img src="runninja.jpg" alt="running">
+      <img src="shadow.png" alt="shadow">
+      <img src="turtle.jpg" alt="turtle">
+      <img src="cake.jpg" alt="cake">
+      <input id="button" type="button" value="RESTORE">
+    </div>
+  </body>
+</html>

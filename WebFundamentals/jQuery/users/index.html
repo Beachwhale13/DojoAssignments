@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('form').submit(function(){
+          var first = $('#first_name').val();
+          var last = $('#last_name').val();
+          var email = $('#email').val();
+          var phone = $('#phone').val();
+          var clearit = $(this).children('input');
+          $('table').append("<tr><td>" + first + "</td><td>" + last + "</td><td>" + email + "</td><td>" + phone + "</td></tr>");
+          for (var i = 0; i < clearit.length; i++){
+            $(clearit[i]).val('');
+          }
+          return false;
+        });
+      })
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <h1>USERS</h1>
+      <table>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email Address</th>
+          <th>Contact #</th>
+        </tr>
+      </table>
+
+      <h1> Add User</h1>
+      <form>
+        First Name: <input type="text", name="first_name" id="first_name"><br>
+        Last Name: <input type="text", name="last_name" id="last_name"><br>
+        Email Address: <input type="email", name="email" id="email"><br>
+        Contact No: <input type="text", name="phone" id="phone"><br>
+        <button> Add User </button>
+    </div>
+  </body>
+</html>

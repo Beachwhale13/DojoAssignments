@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ninja to Cat</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('img').click(function(){
+          var temp = $(this).attr("data-alt-src");
+          var temp1 = $(this).attr('src');
+          if(($(this).attr('src')) === temp1){
+            $(this).attr("src", temp);
+            $(this).attr("data-alt-src", temp1);
+          }
+        });
+      })
+    </script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <h1>jQuery Assignment: Ninja to Cat</h1>
+      <img src="img/cat0.png" alt="cat0" data-alt-src="img/ninja0.png">
+      <img src="img/cat1.png" alt="cat1" data-alt-src="img/ninja1.png">
+      <img src="img/cat2.png" alt="cat2" data-alt-src="img/ninja2.png">
+      <img src="img/cat3.png" alt="cat3" data-alt-src="img/ninja3.png">
+      <img src="img/cat4.png" alt="cat4" data-alt-src="img/ninja4.png">
+    </div>
+  </body>
+</html>

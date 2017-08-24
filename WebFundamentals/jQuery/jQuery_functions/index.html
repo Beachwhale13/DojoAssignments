@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery Functions</title>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#starthere').click(function() {
+          alert("Don't Touch Me!!");
+          $('#shy').hide(500);
+          $('#notShy').show(500);
+        });
+        $('#toggling').click(function(){
+          $('#togglebutton').toggle(300);
+        });
+        $('#downdowndown').click(function(){
+          $('#fall').slideDown("slow");
+        });
+        $('#upupup').click(function(){
+          $('#float').slideUp("slow",function(){
+            $('#upupup').after("<h1 style='color:blue'>All done</h1>")
+          });
+        })
+        $('#seesaw').click(function(){
+          $('#kidonseesaw').slideToggle(1000);
+        })
+        $('#fadein').click(function(){
+          $('#fog').fadeIn(1000);
+        })
+        $('#fadeout').click(function(){
+          $('#bye').fadeOut(1000);
+        })
+        $('#addingclass').click(function(){
+          $("ul li").addClass("myList")
+          $('.myList').css("background","green");
+        });
+        $('h3').click(function(){
+          $('#before').before("<p> Wait Wait Wait</p>");
+        })
+        $('#after').click(function(){
+          $('#after').after("<h1> Done-zos!!</h1>");
+        });
+        $('ol li').click(function(){
+          $('#before').append("<h1>Off to work!!</h1>");
+        })
+        $('#leavealone').click(function(){
+          $('#addhere').after($('div.myHTML').html());
+        })
+        $('#makeitbig').click(function(){
+          $('form input').attr("size", "70");
+        })
+        $('#givemeinfo').click(function(){
+          $('form input').val("WRITE SOMETHING HERE");
+        })
+        $('#whatdidyousay').click(function(){
+          $('#whatdidyousay').after($('ul').text());
+        })
+      })
+    </script>
+  </head>
+
+  <body>
+    <div style="border: 1px black solid">
+      <h1 id="starthere">CLICK ME!</h1>
+      <p id="shy">I'm shy....</p>
+      <p id="notShy" style="display: none"> I'M NOT!! </p>
+    </div>
+    <div style="border: 1px black solid">
+      <h1 id="toggling">No, click click click me!!</h1>
+      <input type="button" id="togglebutton" value="I toggle =)" style="background-color:blue; width:100px">
+    </div>
+    <div style="border: 1px black solid">
+      <h1 id="fadein"> Click me...like fog....</h1>
+      <h2 id="fog" style="display:none"> Foooooogggggggg</h2>
+
+      <h1 id="fadeout"> Click me...Byes!! </h1>
+      <h2 id="bye"> Byeeeeeeee</h2>
+    </div>
+    <div style="border: 1px black solid">
+      <h1 id="downdowndown">Click and Slide....</h1>
+      <img id="fall" src="skydiving.jpg" alt="" width="150" style="display:none">
+
+      <h1 id="upupup"> ....Click and Slide UP!</h1>
+      <img id="float" src="slide.jpg" alt="" width="150">
+
+      <h1 id="seesaw"> Click click click, but don't blink! </h1>
+      <img id="kidonseesaw" src="seesaw.png" alt="" width="150">
+    </div>
+    <div style="border: 1px black solid">
+      <h1 id="addingclass">My Presto Listo - adding class (CLICK!)</h1>
+      <ul>
+        <li>A list</li>
+        <li>Of things</li>
+        <li>I need</li>
+        <li>To do.</li>
+      </ul>
+
+      <h3> Don't Forget! Click! </h3>
+      <ol id="before">
+        <li id="first">Wake Up</li>
+        <li>Brush Teeth</li>
+        <li>Eat Breakfast</li>
+      </ol>
+      <input type="button" value="Click Me!" id="after" style="background:red;width:100px">
+    </div>
+    <div class="myHTML" style="border: 1px black solid">
+      <h1 id="addhere"><span id="leavealone" style="text-decoration: underline">Click</span> to LEAVE My HTML Alone</h1>
+    </div>
+    <div class="myAttributes" style="border: 1px black solid">
+      <h1> Attributes - <span id="makeitbig" style="text-decoration:underline">More Space</span></h1>
+      <h1> Attributes - <span id="givemeinfo" style="text-decoration:underline">Fill Me In</span></h1>
+      <form style="font-size: 300%">
+        First Name:
+        <input type="text" name="firstname" value="" style="display:block; border: 1px red solid;font-size: 50%" size="40">
+        Last Name:
+        <input type="text" name="lastname" value="" style="display: block; border: 1px red solid;font-size: 50%" size="40">
+        <input id="done" type="submit" value="DONE" style="display: border: 1px black solid; font-size: 50%;background:black; color:white">
+      </form>
+    </div>
+    <div class="myAttributes" style="border: 1px black solid">
+      <h1> What Did you <span id="whatdidyousay" style="text-decoration:underline">Say?</span> Copying Text</h1>
+
+    </div>
+  </body>
+</html>
