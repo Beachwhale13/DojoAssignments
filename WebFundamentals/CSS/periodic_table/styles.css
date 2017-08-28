@@ -1,27 +1,98 @@
-table{
+.container{
+  width: 940px;
+  padding: 10px;
+}
+
+.blue,
+.yellow,
+.red,
+.green,
+.empty{
+  border: 1px solid black;
+  display: inline-block;
+  padding: 1px;
   text-align: center;
-  border: 1px black solid;
+  width: 40px;
+  height: 50px;
+  vertical-align: top;
+  margin-bottom: 5px;
 }
 
-tr{
-  border: 1px black solid;
+p{
+  margin: 0 auto;
+  font-size: 70%;
+  margin-top: 2px;
 }
 
-th{
+h3{
+  color: blue;
+  margin: 0 auto;
+}
+
+.headings{
+  width: 42px;
   color: red;
-  border: 1px rgba(0, 0, 0, 1) solid;
-}
-
-.green td{
-  background-color: green;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  height: 50px;
+  vertical-align: top;
+  margin-bottom: 5px;
 }
 
 .empty{
-  background-color: initial;
+  border: none;
+  width: 42px;
 }
 
-.element{
-  color: blue;
-  font-weight: bold;
-  font-size: 110%;
+.edge{
+  margin-left: 10px;
+}
+
+.headings p{
+  margin-top: 12px;
+}
+
+.blue{
+  background-color: #479EF0;
+}
+
+.yellow{
+  background-color: #FBCD37;
+}
+
+.red{
+  background-color: pink;
+}
+
+.break{
+  margin-top: 10px;
+}
+
+.green{
+  background-color: #2DE525;
+}
+
+.extra{
+  color: red;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.extra1{
+  color: red;
+  display: inline-block;
+}
+
+.extra p{
+  margin-top: 15px;
+}
+
+.bottom{
+  width: 100px;
+  margin-left: 35px;
+}
+
+.bottom p{
+  margin-top: 10px;
 }
