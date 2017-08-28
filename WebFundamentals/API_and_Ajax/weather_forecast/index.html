@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>What's the Weather</title>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $(document).on('submit', 'form', function(){
+        var entry = $('#query').val();
+        $('#query').val('');
+        var key = "2526cd40a063f312be3e716aea1da4f9";
+        var url = "https://api.openweathermap.org/data/2.5/weather?q=" + entry + "&APPID=" + key;
+        $.get(url, function(data){
+          $('.answer').html('');
+          var kelvin = data.main.temp;
+          var fahren = Math.floor(((kelvin-273.15)*1.8)+32);
+          var html = "<h1>" + data.name + "</h1>";
+          html += "<h3>Temperature: " + fahren + " F</h3>";
+          $('.answer').append(html);
+        }, "json");
+        return false;
+      });
+    })
+
+    </script>
+  </head>
+
+  <body>
+    <div class="search">
+      <h1> What's the Weather?</h1>
+      <form>
+        <input type="text" id="query" placeholder="enter location">
+        <button> Search Weather </button>
+      </form>
+    </div>
+
+    <div class="answer">
+    </div>
+  </body>
+</html>

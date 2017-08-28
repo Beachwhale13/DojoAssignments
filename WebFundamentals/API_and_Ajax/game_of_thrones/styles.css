@@ -1,0 +1,21 @@
+img{
+  width: 20%;
+  height: 135px;
+  display: inline-block;
+}
+
+label{
+  display: block;
+  margin-bottom: 5px 0;
+}
+
+form{
+  margin-top: 50px;
+  width: 500px;
+  padding: 50px;
+  margin-left: 50px;
+}
+
+#title{
+  margin-top: 20px;
+}

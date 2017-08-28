@@ -1,0 +1,27 @@
+table{
+  text-align: center;
+  border: 1px black solid;
+}
+
+tr{
+  border: 1px black solid;
+}
+
+th{
+  color: red;
+  border: 1px rgba(0, 0, 0, 1) solid;
+}
+
+.green td{
+  background-color: green;
+}
+
+.empty{
+  background-color: initial;
+}
+
+.element{
+  color: blue;
+  font-weight: bold;
+  font-size: 110%;
+}

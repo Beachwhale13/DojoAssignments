@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Game of Thrones</title>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('img').click(function(){
+        var houseselect = $(this).attr('alt');
+        for (var i = 1; i < 445; i++){
+          var url = "https://anapioficeandfire.com/api/houses/" + i;
+          $.get(url, function(data){
+            if (data.name === houseselect){
+              console.log(data);
+              var html = "<form><fieldset><legend>House Details</legend><fieldset>";
+              html += "<label>Name: " + data.name + "</label>";
+              html += "<label>Words: " + data.words + "</label>";
+              html += "<label id='title'>Titles: "
+              for (var i = 0; i < data.titles.length; i++){
+                html += data.titles[i] + ", "
+              }
+                html = html.slice(0, -2);
+                html += "</label></fieldset>"
+                $('.answer').html('');
+                $('.answer').append(html);
+            }
+          }, "json");
+        }
+      });
+    })
+    </script>
+  </head>
+
+  <body>
+    <div class="houses">
+      <img src="gameofthrones/baratheon.png" alt="House Baratheon of Storm's End" id="baratheon">
+      <img src="gameofthrones/lannister.jpg" alt="House Lannister of Casterly Rock" id="lannister">
+      <img src="gameofthrones/stark.jpg" alt="House Stark of Winterfell" id="stark">
+      <img src="gameofthrones/targaryen.jpg" alt="House Targaryen of King's Landing" id="targaryen">
+    </div>
+
+    <div class="answer">
+
+    </div>
+  </body>
+</html>
