@@ -1,0 +1,49 @@
+1. pip install Django - 
+[Beachwhale:~ Beachwhale$ pip2 install Django
+Collecting Django
+  Downloading Django-1.11.5-py2.py3-none-any.whl (6.9MB)
+    100% |████████████████████████████████| 7.0MB 146kB/s 
+Collecting pytz (from Django)
+  Downloading pytz-2017.2-py2.py3-none-any.whl (484kB)
+    100% |████████████████████████████████| 491kB 1.8MB/s 
+Installing collected packages: pytz, Django
+Successfully installed Django-1.11.5 pytz-2017.2
+
+So you are installing Django - it download the packages and collections and installed them.
+
+2. pip list
+Django (1.11.5)
+pip (9.0.1)
+pytz (2017.2)
+setuptools (32.1.0)
+wheel (0.29.0)
+Beachwhale:~ Beachwhale$ 
+	
+Lists all the packages that are installed.
+
+3. pip install Django - 
+
+Requirement already satisfied: Django in /usr/local/lib/python2.7/site-packages
+Requirement already satisfied: pytz in /usr/local/lib/python2.7/site-packages (from Django)
+
+Says that Django is already installed on my computer.
+
+4. pip freeze
+Django==1.11.5
+pytz==2017.2
+Pip freeze outputs installed packages in requirements format. list tells you which packages are on your computer that are already installed. This tells you which ones are currently being used. 
+
+when we run pip freeze> requirements.txt and do a ls - it added requirements.text file to my desktop. The file was empty.
+
+5. pip uninstall Django
+Successfully uninstalled Django-1.11.5
+
+Says it has taken the program off my computer.
+
+6. pip show Django
+doesn’t show anything. Django is no longer on my computer
+
+7. pip search Flask
+pip does a search the flask package. Returns a list of possible packages 
+
+
