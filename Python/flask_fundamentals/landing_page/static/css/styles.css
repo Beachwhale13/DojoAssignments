@@ -1,0 +1,11 @@
+h1{
+  color: lightblue;
+}
+
+p{
+  border: 1px black dotted;
+}
+
+img{
+  border: 5px lightblue dashed;
+}

@@ -1,0 +1,12 @@
+.building{
+  width: 20%;
+  display: inline-block;
+  border: 1px black solid;
+  padding: 5px;
+  text-align: center;
+}
+
+#activity{
+  border: 1px black solid;
+  width: 90%;
+}

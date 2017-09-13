@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ramenAllDay</title>
+  </head>
+  <body>
+    <h1>This will be the ramen page!</h1>
+    <img src="{{ url_for('static', filename='img/ramen.jpg')}}" alt=ramen>
+
+    <p> Choose an option!!! </p>
+    <p>Course {{session['course']}}</p>
+
+    <form action="/reset" method ="POST">
+    <button type="submit" value="reset">instant ramen</button>
+    </form>
+
+    <form action="/poison" method="POST">
+    <button type="submit" value="poison">real ramen</button>
+    </form>
+  </body>
+</html>
