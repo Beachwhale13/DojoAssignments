@@ -1,0 +1,29 @@
+1. find all of the states:
+SELECT * FROM states;
+
+
+2. find all of the states where the id is greater than 2
+SELECT * FROM states WHERE id > 2;
+
+
+3. Count the number of cities
+SELECT COUNT(id) FROM cities;
+
+
+4. Find all the cities in Nevada
+SELECT * FROM cities JOIN states ON cities.state_id = states.id WHERE states.name = "Nevada";
+
+
+5. Order the states by name in alphabetical order
+SELECT name FROM states ORDER BY name;
+
+
+6. Match all of the cities state_id with the proper id in states
+SELECT * FROM cities JOIN states ON cities.state_id = states.id;
+
+7. Find all the businesses in California
+SELECT * FROM businesses JOIN cities ON businesses.city_id = cities.id JOIN states ON cites.state_id = state.id WHERE states.name = "California";
+
+
+8. Find the number of businesses in each city and order them by city name
+SELECT COUNT(businesses.id) FROM businesses JOIN cities ON businesses.city_id = cities.id GROUP BY businesses.city_id ORDER BY cities.name

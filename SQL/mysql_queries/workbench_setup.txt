@@ -1,0 +1,6 @@
+SELECT * FROM users;
+SELECT first_name, last_name FROM users;
+SELECT last_name FROM users WHERE id > 3;
+SELECT * FROM users WHERE first_name LIKE "K%";
+SELECT * FROM tweets WHERE user_id = 2
+SELECT user.first_name user.last_name JOIN tweets ON tweets.user_id = user.id
