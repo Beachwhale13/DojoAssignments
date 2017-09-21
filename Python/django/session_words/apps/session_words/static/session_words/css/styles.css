@@ -1,0 +1,62 @@
+.newword,
+.results{
+  display: inline-block;
+  width: 250px;
+  padding: 1em;
+  vertical-align: top;
+}
+
+.results p{
+  display: block;
+}
+
+.radio input{
+  display: inline-block;
+}
+
+.checkbox{
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
+.radio{
+  margin-bottom: 1em;
+}
+
+#word{
+  width: 95%;
+  height: 2em;
+  border: 2px black solid
+}
+
+#addbutton{
+  background-color: lightblue;
+  text-align: center;
+  display: block;
+  border-radius: 5px;
+}
+
+#clearbutton{
+  background-color: pink;
+  text-align: center;
+  display: block;
+  vertical-align: top;
+  margin-bottom: 5em;
+  border-radius: 5px;
+}
+
+.red{
+  color: red;
+}
+
+.blue{
+  color: blue;
+}
+
+.green{
+  color: green;
+}
+
+.big{
+  font-size: 200%;
+}

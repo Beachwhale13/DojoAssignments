@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Amadon</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'amadon/css/bootstrap.css' %}">
+  </head>
+  <body>
+    <h1>Amadon Store!</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dojo Tshirt</td>
+          <td>$19.99</td>
+          <td><form action='/buy' method='post'>
+            {% csrf_token %}
+            <select name='quantity'>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+            <input type='hidden' name='price' value='19.99' />
+            <input type='submit' value='Buy!' />
+          </form></td>
+        </tr>
+        <tr>
+          <td>Dojo Sweater</td>
+          <td>$29.99</td>
+          <td><form action='/buy' method='post'>
+            {% csrf_token %}
+            <select name='quantity'>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+            <input type='hidden' name='price' value='29.99' />
+            <input type='submit' value='Buy!' />
+          </form></td>
+        </tr>
+        <tr>
+          <td>Dojo Cup</td>
+          <td>$4.99</td>
+          <td><form action='/buy' method='post'>
+            {% csrf_token %}
+            <select name='quantity'>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+            <input type='hidden' name='price' value='4.99' />
+            <input type='submit' value='Buy!' />
+          </form></td>
+        </tr>
+        <tr>
+          <td>Algorithm Book</td>
+          <td>$49.99</td>
+          <td><form action='/buy' method='post'>
+            {% csrf_token %}
+            <select name='quantity'>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+            <input type='hidden' name='price' value='49.99' />
+            <input type='submit' value='Buy!' />
+          </form></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
