@@ -58,9 +58,9 @@
       <h1>Activity:</h1>
       {% for activity in request.session.activities %}
         {% if activity.color == "green" %}
-          <p class="green">Earned {{activity.winnings}} golds from the {{activity.building}} ({{activity.datetime}})</p>
+          <p class="{{activity.color}}">Earned {{activity.winnings}} golds from the {{activity.building}} ({{activity.datetime}})</p>
         {% else %}
-          <p class="red">Entered the {{activity.building}} and lost {{activity.winnings}} golds...Ouch...({{activity.datetime}})</p></p>
+          <p class="{{activity.color}}">Entered the {{activity.building}} and lost {{activity.winnings}} golds...Ouch...({{activity.datetime}})</p></p>
         {% endif %}
       {% endfor %}
     </div>
