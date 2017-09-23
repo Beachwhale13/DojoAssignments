@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login and Registration</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'logreg/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'logreg/css/styles.css' %}">
+  </head>
+  <body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div>
+      <form action="/register" method="post">
+        {% csrf_token %}
+        <fieldset>
+          <legend>Registration</legend>
+          <label>First Name:<input type="text" name="first_name"></label>
+          <label>Last Name:<input type="text" name="last_name"></label>
+          <label>Email: <input type="email" name="email"></label>
+          <label>Password: <input type="password" name="password"></label>
+          <label>Confirm PW: <input type="password" name="cpass"></label>
+          <input type="hidden" name="route" value="register">
+          <input type="submit" value="Register">
+        </fieldset>
+      </form>
+    </div>
+    <div>
+      <form action="/login" method="post">
+        <fieldset>
+          <legend>Login</legend>
+          {% csrf_token %}
+          <label>Email: <input type="text" name="email"></label>
+          <label>Password: <input type="text" name="password"></label>
+          <input type="hidden" name="route" value="login">
+          <input type="submit" value="Login">
+        </fieldset>
+      </form>
+    </div>
+
+  </body>
+</html>

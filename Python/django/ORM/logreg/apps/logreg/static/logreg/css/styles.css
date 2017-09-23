@@ -1,0 +1,14 @@
+fieldset{
+  border: 1px solid black;
+  padding: 1em;
+}
+label{
+  display: block;
+}
+form{
+  display: inline-block;
+}
+
+.messages{
+  color: red;
+}

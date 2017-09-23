@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, HttpResponse, redirect
 from models import *
 import random
-from time import gmtime, strftime
+from time import localtime, strftime
 
 # Create your views here.
 def index(request):
@@ -14,7 +14,7 @@ def index(request):
         request.session['activities'] = []
     if not "happenings" in request.session:
         request.session['happenings'] = {}
-    return render(request, 'ninja_gold/index.html', )
+    return render(request, 'ninja_gold/index.html')
 
 def process(request):
     if request.method == "POST":
@@ -36,7 +36,7 @@ def process(request):
             'building': request.POST['building'],
             'winnings': winnings,
             'color': color,
-            "datetime": strftime("%Y/%m/%d %-I:%M %p", gmtime()),
+            "datetime": strftime("%Y/%m/%d %-I:%M %p", localtime()),
             }
 
         request.session['activities'].append(request.session['happenings'])

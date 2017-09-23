@@ -10,8 +10,6 @@ from models import *
 def index(request):
     courses = Course.objects.all
     context = {'courses': courses}
-
-
     return render(request, "courses/index.html", context)
 
 def add(request):
