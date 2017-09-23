@@ -1,0 +1,188 @@
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ python2 manage.py makemigrations
+No changes detected
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ python2 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying sessions.0001_initial... OK
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ Dojo.objects.create(name = CodingDojo Silicon Valley", city="Mountain View", state="CA")
+-bash: syntax error near unexpected token `name'
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ Dojo.objects.create(name = "CodingDojo Silicon Valley", city="Mountain View", state="CA")
+-bash: syntax error near unexpected token `name'
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ python2 manage.py shell
+Python 2.7.13 (default, Sep  5 2017, 10:54:39)
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.42)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.dojo_ninjas.models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/Beachwhale/Desktop/dojo_ninjas/apps/dojo_ninjas/models.py", line 7, in <module>
+    class Dojo(models.Model):
+  File "/Users/Beachwhale/Desktop/DojoAssignments/myEnvironments/djEnv/lib/python2.7/site-packages/django/db/models/base.py", line 118, in __new__
+    "INSTALLED_APPS." % (module, name)
+RuntimeError: Model class apps.dojo_ninjas.models.Dojo doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+>>> from apps.dojo_ninjas.models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/Beachwhale/Desktop/dojo_ninjas/apps/dojo_ninjas/models.py", line 7, in <module>
+    class Dojo(models.Model):
+  File "/Users/Beachwhale/Desktop/DojoAssignments/myEnvironments/djEnv/lib/python2.7/site-packages/django/db/models/base.py", line 118, in __new__
+    "INSTALLED_APPS." % (module, name)
+RuntimeError: Model class apps.dojo_ninjas.models.Dojo doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+>>> exit()
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ python2 manage.py makemigrations
+Migrations for 'dojo_ninjas':
+  apps/dojo_ninjas/migrations/0001_initial.py
+    - Create model Dojo
+    - Create model Ninja
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ python2 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_ninjas, sessions
+Running migrations:
+  Applying dojo_ninjas.0001_initial... OK
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ python2 manage.py shell
+Python 2.7.13 (default, Sep  5 2017, 10:54:39)
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.42)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.dojo_ninjas.models import *
+>>> Dojo.objects.create(name="CodingDojo Silicon Valley", city="Mountain View", state="CA")
+<Dojo: Dojo object>
+>>> Dojo.objects.create(name="CodingDojo Seattle", city="Seattle", state="CA")
+<Dojo: Dojo object>
+>>> Dojo.objects.create(name="CodingDojo New York", city="New York", state="NY")
+<Dojo: Dojo object>
+>>> Ninja.objects.create(dojo = Dojo.objects.get(id =1), first_name="Beeker", last_name = "Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(id=2), first_name="Stitchy", last_name = "Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(id=2), first_name="Peanut", last_name = "Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(id=3), first_name="Ellie", last_name="Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(id=3), first_name="Tyson", last_name="Lee")
+<Ninja: Ninja object>
+>>> Dojo.objects.first().ninjas.all().name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'name'
+>>> Dojo.objects.first().ninjas.all()
+<QuerySet [<Ninja: Ninja object>]>
+>>> Ninja.objects.first().dojo
+<Dojo: Dojo object>
+>>> Ninja.objects.last()dojo
+  File "<console>", line 1
+    Ninja.objects.last()dojo
+                           ^
+SyntaxError: invalid syntax
+>>> Ninja.objects.last().dojo
+<Dojo: Dojo object>
+>>> Ninja.objects.last().dojo.name
+u'CodingDojo New York'
+>>> Dojo.objects.get(id=1).delete()
+(2, {u'dojo_ninjas.Ninja': 1, u'dojo_ninjas.Dojo': 1})
+>>> Dojo.objects.get(id=2).delete()
+(3, {u'dojo_ninjas.Ninja': 2, u'dojo_ninjas.Dojo': 1})
+>>> Dojo.objects.get(id=3).delete()
+(3, {u'dojo_ninjas.Ninja': 2, u'dojo_ninjas.Dojo': 1})
+>>> Dojo.objects.create(name="Dojo1", city="Los Angeles", state="CA")
+<Dojo: Dojo object>
+>>> Dojo.objects.create(name="Dojo2", city="Seattle", state="CA")
+<Dojo: Dojo object>
+>>> Dojo.objects.create(name="Dojo3", city="Washington", State="WA")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/Beachwhale/Desktop/DojoAssignments/myEnvironments/djEnv/lib/python2.7/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/Beachwhale/Desktop/DojoAssignments/myEnvironments/djEnv/lib/python2.7/site-packages/django/db/models/query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "/Users/Beachwhale/Desktop/DojoAssignments/myEnvironments/djEnv/lib/python2.7/site-packages/django/db/models/base.py", line 572, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'State' is an invalid keyword argument for this function
+>>> Dojo.objects.create(name="Dojo3", city="Washington", state="WA")
+<Dojo: Dojo object>
+>>> Dojo.objects.count()
+3
+>>> Ninja.objects.create(dojo=Dojo.objects.get(id=2), first_name="Kai", last_name="Lee")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/Beachwhale/Desktop/DojoAssignments/myEnvironments/djEnv/lib/python2.7/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/Beachwhale/Desktop/DojoAssignments/myEnvironments/djEnv/lib/python2.7/site-packages/django/db/models/query.py", line 380, in get
+    self.model._meta.object_name
+DoesNotExist: Dojo matching query does not exist.
+>>> Ninja.objects.create(dojo=Dojo.objects.get(name="Dojo2"), first_name="Kai", last_name="Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(name="Dojo2"), first_name="Yao", last_name="Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(name="Dojo2"), first_name="Sandy", last_name="Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(name="Dojo1"), first_name="Beeker", last_name="Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(name="Dojo1"), first_name="Stitch", last_name="Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(name="Dojo1"), first_name="Peanut", last_name="Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(name="Dojo3"), first_name="Ellie", last_name="Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(name="Dojo3"), first_name="Tyson", last_name="Lee")
+<Ninja: Ninja object>
+>>> Ninja.objects.create(dojo=Dojo.objects.get(name="Dojo3"), first_name="Heidi", last_name="Lee")
+<Ninja: Ninja object>
+>>> Dojo.objects.get(name="Dojo1").ninjas.all()
+<QuerySet [<Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>]>
+>>> Dojo.objects.last().ninjas.all()
+<QuerySet [<Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>]>
+>>> exit()
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ python2 manage.py makemigrations
+You are trying to add a non-nullable field 'desc' to dojo without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> null
+Invalid input: name 'null' is not defined
+>>> ''
+Migrations for 'dojo_ninjas':
+  apps/dojo_ninjas/migrations/0002_dojo_desc.py
+    - Add field desc to dojo
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ python2 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_ninjas, sessions
+Running migrations:
+  Applying dojo_ninjas.0002_dojo_desc... OK
+(djEnv) Beachwhale:dojo_ninjas Beachwhale$ python2 manage.py shell
+Python 2.7.13 (default, Sep  5 2017, 10:54:39)
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.42)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.dojo_ninjas.models import *
+>>> Dojo.objects.all().desc
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'desc'
+>>> Dojo.objects.all().name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'name'
+>>> Dojo.objects.first().name
+u'Dojo1'
+>>> Dojo.objects.first().desc
+u''
+>>>

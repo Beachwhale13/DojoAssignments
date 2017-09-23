@@ -1,0 +1,166 @@
+(djEnv) Beachwhale:Desktop Beachwhale$ cd django_orm
+(djEnv) Beachwhale:django_orm Beachwhale$ ls
+apps		db.sqlite3	main		manage.py
+(djEnv) Beachwhale:django_orm Beachwhale$ python2 manage.py makemigrations
+Migrations for 'books_authors':
+  apps/books_authors/migrations/0002_auto_20170922_0406.py
+    - Create model Author
+    - Create model Book
+    - Delete model Dojo
+    - Add field books to author
+(djEnv) Beachwhale:django_orm Beachwhale$ python2 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, books_authors, contenttypes, dojo_ninjas, sessions
+Running migrations:
+  Applying books_authors.0002_auto_20170922_0406... OK
+(djEnv) Beachwhale:django_orm Beachwhale$ pythons2 manage.py shell
+-bash: pythons2: command not found
+(djEnv) Beachwhale:django_orm Beachwhale$ python2 manage.py shell
+Python 2.7.13 (default, Sep  5 2017, 10:54:39)
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.42)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.books_authors.models import *
+
+
+Create 5 books with the following names: C sharp, Java, Python, PHP, Ruby
+>>> Book.objects.create(name="C sharp", desc="Book on C Sharp")
+<Book: Book object>
+>>> Book.objects.create(name="Java", desc="Book on Java")
+<Book: Book object>
+>>> Book.objects.create(name="Python", desc="Book on Python")
+<Book: Book object>
+>>> Book.objects.create(name="PHP", desc="Book on PHP")
+<Book: Book object>
+>>> Book.objects.create(name="Ruby", desc="Book on Ruby")
+<Book: Book object>
+>>> Book.objects.count()
+5
+
+Create 5 different authors: Mike, Speros, John, Jadee, Jay
+>>> Author.objects.create(first_name="Mike" last_name="A", email="MikeA@dojo.com")
+  File "<console>", line 1
+    Author.objects.create(first_name="Mike" last_name="A", email="MikeA@dojo.com")
+                                                    ^
+SyntaxError: invalid syntax
+>>> Author.objects.create(first_name="Mike" last_name="Abc", email="MikeA@dojo.com")
+  File "<console>", line 1
+    Author.objects.create(first_name="Mike" last_name="Abc", email="MikeA@dojo.com")
+                                                    ^
+SyntaxError: invalid syntax
+>>> Author.objects.create(first_name="Mike", last_name="A", email="MikeA@dojo.com")
+<Author: Author object>
+>>> Author.objects.create(first_name="Speros", last_name="B", email="SperosB.com")
+<Author: Author object>
+>>> Author.objects.create(first_name="John", last_name="C", email="JohnC@dojo.com")
+<Author: Author object>
+>>> Author.objects.create(first_name="Jadee", last_name="D", email="JadeeD@dojo.com")
+<Author: Author object>
+>>> Author.objects.create(first_name="Jay", last_name="E", email="JayE@dojo.com")
+<Author: Author object>
+>>> Author.objects.count()
+5
+>>> exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> exit()
+
+
+Add a new field in the authors table called 'notes'.  Make this a TextField.  Successfully create and run the migration files.
+(djEnv) Beachwhale:django_orm Beachwhale$ python2 manage.py makemigrations
+You are trying to add a non-nullable field 'notes' to author without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> ''
+Migrations for 'books_authors':
+  apps/books_authors/migrations/0003_author_notes.py
+    - Add field notes to author
+(djEnv) Beachwhale:django_orm Beachwhale$ python2 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, books_authors, contenttypes, dojo_ninjas, sessions
+Running migrations:
+  Applying books_authors.0003_author_notes... OK
+(djEnv) Beachwhale:django_orm Beachwhale$ python2 manage.py shell
+Python 2.7.13 (default, Sep  5 2017, 10:54:39)
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.42)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.books_authors.models import *
+>>> Book.objects.get(id=5)
+<Book: Book object>
+
+
+Change the name of the 5th book to C#
+>>> Book.objects.get(id=5).name
+u'Ruby'
+>>> b=Book.objects.get(id=5)
+>>> b.name = "C#"
+>>> b.save()
+>>> Book.objects.get(id=5).name
+u'C#'
+
+Change the first_name of the 5th author to Ketul
+>>> Author.objects.get(id=5).first_name
+u'Jay'
+>>> b=Author.objects.get(id=5)
+>>> b.first_name = "Ketul"
+>>> b.save()
+>>> Author.objects.get(id=5).first_name
+u'Ketul'
+
+>>> a1 = Author.objects.get(id=1)
+>>> b1 = Book.objects.get(id=1)
+>>> b2 = Book.objects.get(id=2)
+
+
+Assign the first author to the first 2 books
+>>> a1.books.add(b1, b2)
+>>> a2 = Author.objects.get(id=2)
+>>> b3 = Book.objects.get(id=3)
+
+
+Assign the second author to the first 3 books
+>>> a2.books.add(b1, b2, b3)
+>>> a3 = Author.objects.get(id=3)
+>>> b4 = Book.objects.get(id=4)
+
+
+Assign the third author to the first 4 books
+>>> a3.books.add(b1, b2, b3, b4)
+>>> Author.objects.get(id=3).books.all()
+<QuerySet [<Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>]>
+>>> a4 = Author.objects.get(id=4)
+>>> b5 = Book.objects.get(id=5)
+
+Assign the fourth author to the first 5 books (or in other words, all the books)
+>>> a4.books.add(b1, b2, b3, b4, b5)
+>>> a4.books.all()
+<QuerySet [<Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>]>
+
+For the 3rd book, retrieve all the authors
+>>> Author.objects.filter(books__id=3)
+<QuerySet [<Author: Author object>, <Author: Author object>, <Author: Author object>]>
+
+For the 3rd book, remove the first author
+>>> b3 = Book.objects.get(id=3)
+>>> a1 = Author.objects.get(first_name="Speros")
+>>> b3.authors.remove(a1)
+>>> b3.authors.all()
+<QuerySet [<Author: Author object>, <Author: Author object>]>
+
+For the 2nd book, add the 5th author as one of the authors
+>>> b2 = Book.objects.get(id=2)
+>>> a5 = Author.objects.get(id=5)
+>>> b2.authors.add(a5)
+
+Find all the books that the 3rd author is part of
+>>> Book.objects.filter(authors__id=3)
+<QuerySet [<Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>]>books
+
+Find all the books that the 2nd author is part of
+>>> Book.objects.filter(authors__id=2)
+<QuerySet [<Book: Book object>, <Book: Book object>]>

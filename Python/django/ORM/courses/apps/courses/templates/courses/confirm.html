@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Delete a Course</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'courses/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'courses/css/styles.css' %}">
+  </head>
+  <body>
+    <h1>Are you sure you want to delete the following course?</h1>
+    <p>Name: {{selection.name}}</p>
+    <p>Description: {{selection.desc}}</p>
+    <button><a href="/">No</a></button>
+    <button class="red"><a href="/{{selection.id}}/destroy">Yes! I Want to delete this!</a></button>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+Create 3 different user accounts
+>>> User.objects.create(first_name="Beeker", last_name="Lee", email="bebeep@lee.com")
+<User: User object>
+>>> User.objects.create(first_name="Stitch", last_name="Lee", email="ibite@lee.com")
+<User: User object>
+>>> User.objects.create(first_name="Peanut", last_name="Lee", email="help@lee.com")
+<User: User object>
+
+Have the first user create 2 books.
+>>> u1.uploaded_books.create(name="Life of Beeks", desc="Meeps all day")
+<Book: Book object>
+>>> u1.uploaded_books.create(name="Life of SandyMommy", desc="Code all day")
+<Book: Book object>
+
+
+Have the second user create 2 other books.
+>>> u2.uploaded_books.create(name="Life of Stitchy", desc="Grrrrrr Grump Grump")
+<Book: Book object>
+>>> u2.uploaded_books.create(name="Life of DaddyKai", desc="Trade all day")
+<Book: Book object>
+
+Have the third user create 2 other books.
+<Book: Book object>
+>>> u3.uploaded_books.create(name="Life of MommyGina", desc="Save the world all day")
+<Book: Book object>
+
+Have the first user like the last book and the first book
+>>> b6 = Book.objects.last()
+>>> b6.name
+u'Life of MommyGina'
+>>> u1.liked_books.add(b1, b6)
+
+Have the second user like the first book and the third book
+>>> b3 = Book.objects.get(id=3)
+>>> u2.liked_books.add(b1, b3)
+>>> u2.liked_books.all()
+<QuerySet [<Book: Book object>, <Book: Book object>]>
+
+Have the third user like all books
+>>> u3.uploaded_books.add(b1, b2, b3, b4,b5,b6)
+>>> u3.uploaded_books.all()
+<QuerySet [<Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>]>
+
+Display all users who like the first book
+>>> Users = User.objects.filter(liked_books =1)
+>>> for i in Users:
+...   i.first_name
+...
+u'Beeker'
+u'Stitch'
+
+Display the user who uploaded the first book
+>>> uploader = b1.uploader.all()
+>>> for i in uploader:
+...   i.first_name
+...
+u'Beeker'
+
+Display all users who like the second book
+>>> User.objects.filter(liked_books=2)
+<QuerySet []>
+
+Display the user who uploaded the second book
+>>> b2.uploader.all()
+>>> uploader = b2.uploader.all()
+>>> for i in uploader:
+...   i.first_name
+...
+u'Beeker'

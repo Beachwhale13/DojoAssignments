@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Semi_Restful Users</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'semi_restful/css/bootstrap.css' %}">
+  </head>
+  <body>
+    <h1>Users</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Full Name</th>
+          <th>Email</td>
+          <th>Created At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td> {{user.id}} </th>
+          <td><a href='/{{user.id}}'>{{user.first_name}} {{user.last_name}}</a></th>
+          <td> {{user.email}}</td>
+          <td> {{user.created_at|date:"M d Y"}}</td>
+          <td><a href="/{{user.id}}">Show</a>
+            <a href="/{{user.id}}/edit">Edit</a>
+            <a href="/{{user.id}}/delete">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="/new">Add a New User</a>
+  </body>
+</html>

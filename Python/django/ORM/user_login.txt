@@ -1,0 +1,119 @@
+(djEnv) Beachwhale:Desktop Beachwhale$ cd user_login
+(djEnv) Beachwhale:user_login Beachwhale$ python2 manage.py makemigrations
+Migrations for 'user_login':
+  apps/user_login/migrations/0001_initial.py
+    - Create model User
+(djEnv) Beachwhale:user_login Beachwhale$ python2 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user_login
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying user_login.0001_initial... OK
+(djEnv) Beachwhale:user_login Beachwhale$ python2 manage.py shel
+Unknown command: 'shel'
+Type 'manage.py help' for usage.
+(djEnv) Beachwhale:user_login Beachwhale$ python2 manage.py shell
+Python 2.7.13 (default, Sep  5 2017, 10:54:39)
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.42)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.user_login.models import (
+... from apps.user_login.models import *
+  File "<console>", line 2
+    from apps.user_login.models import *
+       ^
+SyntaxError: invalid syntax
+>>> from apps.user_login.models import *
+>>> User.objects.create(first_name="Beeker", last_name="Lee", email_address="beepbeep@lee.com", age=12)
+<User: User object>
+>>> b = User(first_name="Stitchy", last_name="Lee", email_address="bitebite@lee.com", age=13)
+>>> b.save
+<bound method User.save of <User: User object>>
+>>> User.count()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'User' has no attribute 'count'
+>>> User.objects.count()
+1
+>>> b = User(first_name="Stitchy", last_name="Lee", email_address="bitebite@lee.com", age=13)
+>>> b.save()
+>>> b.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'User' object has no attribute 'name'
+>>> b.first_name
+'Stitchy'
+>>> b.last_name
+'Lee'
+>>> b.save()
+>>> User.objects.count()
+2
+>>> Users.objects.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Users' is not defined
+>>> User.objects.all()
+<QuerySet [<User: User object>, <User: User object>]>
+>>> User.objects.count()
+2
+>>> User.objects.last()
+<User: User object>
+>>> User.objects.last.value()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'function' object has no attribute 'value'
+>>> User.objects.last.age()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'function' object has no attribute 'age'
+>>> User.objects.create(first_name="Peanut", last_name="Lee", email_address="saveme@lee.com", age=10)
+<User: User object>
+>>> User.objects.all()
+<QuerySet [<User: User object>, <User: User object>, <User: User object>]>
+>>> User.Ojbects.last()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'User' has no attribute 'Ojbects'
+>>> User.objects.last()
+<User: User object>
+>>> User.objects.last().age
+10
+>>> User.objects.last().first_name
+u'Peanut'
+>>> User.objects.create(first_name="Ellie", last_name="Lee", email_address="ellielee@lee.com", age=1)
+<User: User object>
+>>> b = User(first_name="Tyson", last_name="Lee", email_address="drool@lee.com", age=0)
+>>> b.save()
+>>> User.objects.all()
+<QuerySet [<User: User object>, <User: User object>, <User: User object>, <User: User object>, <User: User object>]>
+>>> User.objects.count()
+5
+>>> User.objects.order_by("created_at")
+<QuerySet [<User: User object>, <User: User object>, <User: User object>, <User: User object>, <User: User object>]>
+>>> User.objects.order_by("-created_at")
+<QuerySet [<User: User object>, <User: User object>, <User: User object>, <User: User object>, <User: User object>]>
+>>> User.objects.get(id=3)
+<User: User object>
+>>> b = User.objects.get(id=3)
+>>> b.last_name = "Hong"
+>>> b.save()
+>>> User.objects.get(id=3).last_name
+u'Hong'
+>>> b = User.objects.get(id=4)
+>>> b.delete()
+(1, {u'user_login.User': 1})
+>>> User.objects.count()
+4
+>>>

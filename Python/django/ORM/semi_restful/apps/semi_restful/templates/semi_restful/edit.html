@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Users</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'semi_restful/css/bootstrap.css' %}">
+  </head>
+  <body>
+    <h1>Edit User {{number}}</h1>
+    <form action="/edit", method="POST">
+      {% csrf_token %}
+      <label>First Name:
+      <input type="text" name="first_name"></label><br>
+      <label>Last Name:
+      <input type="text" name="last_name"></label><br>
+      <label>Email:
+      <input type="text" name="email"></label><br>
+      <input type="hidden" name="user_id" value="{{number}}">
+      <input type="submit" value="Update">
+    </form>
+    <a href="/{{number}}">Show</a> | <a href='/'>Go Back</a>
+  </body>
+</html>

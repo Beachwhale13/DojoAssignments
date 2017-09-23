@@ -1,0 +1,12 @@
+.building{
+  display: inline-block;
+}
+#activity{
+  border: 1px black solid;
+}
+.red{
+  color: red;
+}
+.green{
+  color: green;
+}
