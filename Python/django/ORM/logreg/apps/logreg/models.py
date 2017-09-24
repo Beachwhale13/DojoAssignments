@@ -46,8 +46,6 @@ class UserManager(models.Manager):
             errors['password'] = "Confirmation password does not match the password"
         return errors;
 
-
-class LoginManager(models.Manager):
     def basic_login_validator(self, postData):
         errors = {}
         if len(postData['email']) == 0:
@@ -72,4 +70,3 @@ class User(models.Model):
     password = models.CharField(max_length=255)
 
     objects=UserManager()
-    objects=LoginManager()
