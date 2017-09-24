@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Book</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/styles.css'%}">
+  </head>
+  <body>
+    <div class=container>
+    <div class="bookheader">
+      <a href="/books">Home</a>
+      <p>|</p>
+      <a href="/logout">Logout</a>
+      <h1>{{book.name}}</h1>
+      <p1>Author: {{book.author.name}}</p1>
+    </div>
+    <div class="bookreviews">
+      <h3>Reviews:</h3>
+      {% for review in reviews %}
+        {% if review.book.id == book.id %}
+        <hr />​​​​​​​​​​​​​​​​​​​
+        <p>Rating: <repeat n="{{review.rating}}"></repeat></p>
+        <p><a href="/user/{{review.user.id}}">{{review.user.name}}</a> says: {{review.comment}}</p>
+        <p>Posted On: {{review.created_at|date:"M d, Y"}}</p>
+          {% if review.user.id == request.session.user_id %}
+            <p><a href="/delete/{{review.id}}">Delete this Review</a></p>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class='addreview'>
+      <h3>Add a Review:</h3>
+      <form action="/addreview" method="post">
+        {% csrf_token %}
+        <textarea name ="review" row="4" cols="25"></textarea></label>
+        <label>Rating: <select name="rating">
+          <option value = 1> 1 </option>
+          <option value = 2> 2</option>
+          <option value = 3> 3</option>
+          <option value = 4> 4</option>
+          <option value = 5> 5</option>
+        </select> stars</label>
+        <input type=hidden name=book value="{{book.id}}">
+         <input type="hidden" name="next" value="{{ request.path }}">
+        <input type="submit" value="Submit Review">
+      </form>
+
+    </div>
+  </div>
+  </body>
+</html>

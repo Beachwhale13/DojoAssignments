@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Reviews</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/styles.css'%}">
+  </head>
+  <body>
+    <div class=container>
+    <div class='userheader'>
+      <a href="/books">Home</a>
+      <p class=header>|</p>
+      <a href="/add">Add Book and Review</a>
+      <p class=header>|</p>
+      <a href="/logout">Logout</a>
+    </div>
+    <div class=info>
+      <h3>User Alias: {{user.alias}}</h3>
+      <p>Name: {{user.name}}</p1>
+      <p>Email: {{user.email}}</p>
+      <p>Total Reviews: {{count}}</p>
+    </div>
+    <div class="userbookreviews">
+      <h3>Posted Reviews on the following books:</h3>
+      {% for review in reviews %}
+        <p><a href="/book/{{review.book.id}}">{{review.book.name}}</a></p>
+      {% endfor %}
+    </div>
+    </div>
+  </body>
+</html>

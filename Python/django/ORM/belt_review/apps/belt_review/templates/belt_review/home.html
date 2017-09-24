@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Books Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/styles.css'%}">
+  </head>
+  <body>
+    <div class=container>
+      <div class='homeheader'>
+      <h1> Welcome {{user.alias}}!</h1>
+      <a href="/add">Add Book and Review</a>
+      <p>|</p>
+      <a href="/logout">Logout</a>
+      </div>
+      <div class = "bookreviews">
+        <h4>Recent Book Reviews:</h4>
+          {% for review in reviews %}
+            <hr />
+            <h5><a href="/book/{{review.book.id}}">{{review.book.name}}</a></h5>
+            <p>Rating: <repeat n="{{review.rating}}"></repeat></p>
+            <p><a href="/user/{{review.user.id}}">{{review.user.name}}</a> says: {{review.comment}}</p>
+            <p>Posted On: {{review.created_at|date:"M d, Y"}}</p>
+          </li>
+          {% endfor %}
+      </div>
+      <div class="other">
+        <h3>Other Books with Reviews:</h3>
+        <div class="otherbooks">
+          {% for book in books %}
+            {% if book.num_review != 0 %}
+            <p><a href="/book/{{book.id}}">{{book.name}}</a></p>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

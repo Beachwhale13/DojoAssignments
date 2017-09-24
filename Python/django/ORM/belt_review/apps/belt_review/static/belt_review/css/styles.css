@@ -1,0 +1,97 @@
+fieldset{
+  border: 1px solid black;
+  padding: 1em;
+}
+label{
+  display: block;
+}
+form{
+  display: inline-block;
+}
+
+.messages{
+  color: red;
+}
+
+.homeheader h1,
+.homeheader p{
+  display: inline-block;
+}
+
+.addheader a, p{
+  display: inline;
+}
+
+.addheader h1{
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.bookreview h6{
+  display: inline-block;
+  margin-right: 1em;
+  vertical-align: top;
+}
+.bookreviews p{
+  display: block;
+}
+
+.author{
+  margin-left: 1em;
+}
+
+.userheader p{
+  display: inline;
+}
+
+.info{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.info p{
+  display: block;
+  margin: 0;
+}
+
+.bookheader{
+  margin-bottom: .5em;
+}
+
+.userbookreviews p{
+  display:block;
+}
+
+.otherbooks{
+  border: 1px black solid;
+  padding: .5em;
+  width: 50%;
+}
+
+.otherbooks p{
+  display:block;
+}
+
+repeat {
+    display: inline-block;
+}
+
+repeat[n="1"]:before {
+   content: "★";
+}
+
+repeat[n="2"]:before {
+   content: "★★";
+}
+
+repeat[n="3"]:before {
+   content: "★★★";
+}
+
+repeat[n="4"]:before {
+   content: "★★★★";
+}
+
+repeat[n="5"]:before {
+   content: "★★★★★";
+}

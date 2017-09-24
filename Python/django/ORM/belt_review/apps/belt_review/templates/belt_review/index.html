@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/styles.css' %}">
+  </head>
+  <body>
+    <div class=container>
+    <div>
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+
+    <h1> Welcome! </h1>
+    <div>
+      <form action="/register" method="post">
+        {% csrf_token %}
+        <fieldset>
+          <legend>Registration</legend>
+          <label>Name:<input type="text" name="name"></label>
+          <label>Alias:<input type="text" name="alias"></label>
+          <label>Email: <input type="email" name="email"></label>
+          <label>Password: <input type="password" name="password"></label>
+          <p>*Password should be at least 8 characters</p>
+          <label>Confirm PW: <input type="password" name="cpass"></label>
+          <input type="submit" value="Register">
+        </fieldset>
+      </form>
+    </div>
+
+    <div>
+      <form action="/login" method="post">
+        <fieldset>
+          <legend>Login</legend>
+          {% csrf_token %}
+          <label>Email: <input type="text" name="email"></label>
+          <label>Password: <input type="password" name="password"></label>
+          <input type="hidden" name="route" value="login">
+          <input type="submit" value="Login">
+        </fieldset>
+      </form>
+    </div>
+    </div>
+  </body>
+</html>
